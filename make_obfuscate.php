@@ -61,6 +61,12 @@ $exceptDirectory = [
 
 $onlyFile = [
     // 'general_helper.php',
+    'app/Models/Anjungan.php',
+    'app/Models/AnjunganMenu.php',
+    'donjo-app/controllers/Anjungan.php',
+    'donjo-app/controllers/Anjungan_menu.php',
+    'donjo-app/controllers/Anjungan_pengaturan.php',
+    'donjo-app/helpers/cek_helper.php'
 ];
 
 $exceptFile = [

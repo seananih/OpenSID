@@ -106,7 +106,7 @@ class Database_model extends MY_Model
 
         $migrations = directory_map('donjo-app/models/migrations', 1);
         // sort by name
-        usort($migrations, static fn($a, $b): int => strcmp($a, $b));
+        usort($migrations, static fn ($a, $b): int => strcmp($a, $b));
 
         try {
             foreach ($migrations as $migrate) {
@@ -160,11 +160,11 @@ class Database_model extends MY_Model
     }
 
     // Cek apakah migrasi perlu dijalankan
-    public function cek_migrasi($install = true): void
+    public function cek_migrasi($install = false): void
     {
         // Paksa menjalankan migrasi kalau belum
         // Migrasi direkam di tabel migrasi
-        if (Migrasi::where('versi_database', '=', VERSI_DATABASE)->doesntExist()) {
+        if (($this->premium->validasi_versi($install) || $install) && Migrasi::where('versi_database', '=', VERSI_DATABASE)->doesntExist()) {
             $this->migrasi_db_cri($install);
         }
     }
